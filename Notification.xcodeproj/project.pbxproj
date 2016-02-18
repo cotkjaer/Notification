@@ -10,6 +10,8 @@
 		8FD8741D1C760DBA00181FA6 /* Notification.h in Headers */ = {isa = PBXBuildFile; fileRef = 8FD8741C1C760DBA00181FA6 /* Notification.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		8FD874241C760DBA00181FA6 /* Notification.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8FD874191C760DBA00181FA6 /* Notification.framework */; };
 		8FD874291C760DBA00181FA6 /* NotificationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FD874281C760DBA00181FA6 /* NotificationTests.swift */; };
+		8FD874341C760DC400181FA6 /* NotificationHandlerManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FD874331C760DC400181FA6 /* NotificationHandlerManager.swift */; };
+		8FD875F41C762DC300181FA6 /* NSNotification.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FD875F31C762DC300181FA6 /* NSNotification.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -29,6 +31,8 @@
 		8FD874231C760DBA00181FA6 /* NotificationTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = NotificationTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		8FD874281C760DBA00181FA6 /* NotificationTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationTests.swift; sourceTree = "<group>"; };
 		8FD8742A1C760DBA00181FA6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		8FD874331C760DC400181FA6 /* NotificationHandlerManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotificationHandlerManager.swift; sourceTree = "<group>"; };
+		8FD875F31C762DC300181FA6 /* NSNotification.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NSNotification.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -71,6 +75,8 @@
 		8FD8741B1C760DBA00181FA6 /* Notification */ = {
 			isa = PBXGroup;
 			children = (
+				8FD875F31C762DC300181FA6 /* NSNotification.swift */,
+				8FD874331C760DC400181FA6 /* NotificationHandlerManager.swift */,
 				8FD8741C1C760DBA00181FA6 /* Notification.h */,
 				8FD8741E1C760DBA00181FA6 /* Info.plist */,
 			);
@@ -194,6 +200,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8FD874341C760DC400181FA6 /* NotificationHandlerManager.swift in Sources */,
+				8FD875F41C762DC300181FA6 /* NSNotification.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -308,6 +316,7 @@
 		8FD8742E1C760DBA00181FA6 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				DEFINES_MODULE = YES;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
@@ -318,12 +327,14 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "com.silverback-it.Notification";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
 			name = Debug;
 		};
 		8FD8742F1C760DBA00181FA6 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				DEFINES_MODULE = YES;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
