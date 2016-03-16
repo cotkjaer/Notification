@@ -8,7 +8,7 @@
 
 import Foundation
 
-/// A handler class to ease the bookkeeping associated with adding closure-based notification handling.
+/// A handler class to ease the book-keeping associated with adding closure-based notification handling.
 public class NotificationHandlerManager
 {
     /// The tokens managed by this manager
