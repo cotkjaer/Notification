@@ -10,8 +10,8 @@
 		8FD8741D1C760DBA00181FA6 /* Notification.h in Headers */ = {isa = PBXBuildFile; fileRef = 8FD8741C1C760DBA00181FA6 /* Notification.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		8FD874241C760DBA00181FA6 /* Notification.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8FD874191C760DBA00181FA6 /* Notification.framework */; };
 		8FD874291C760DBA00181FA6 /* NotificationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FD874281C760DBA00181FA6 /* NotificationTests.swift */; };
-		8FD874341C760DC400181FA6 /* NotificationHandlerManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FD874331C760DC400181FA6 /* NotificationHandlerManager.swift */; };
-		8FD875F41C762DC300181FA6 /* NSNotification.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FD875F31C762DC300181FA6 /* NSNotification.swift */; };
+		8FD874341C760DC400181FA6 /* NotificationsHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FD874331C760DC400181FA6 /* NotificationsHandler.swift */; };
+		8FD875F41C762DC300181FA6 /* Notification.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FD875F31C762DC300181FA6 /* Notification.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -31,8 +31,8 @@
 		8FD874231C760DBA00181FA6 /* NotificationTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = NotificationTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		8FD874281C760DBA00181FA6 /* NotificationTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationTests.swift; sourceTree = "<group>"; };
 		8FD8742A1C760DBA00181FA6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		8FD874331C760DC400181FA6 /* NotificationHandlerManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotificationHandlerManager.swift; sourceTree = "<group>"; };
-		8FD875F31C762DC300181FA6 /* NSNotification.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NSNotification.swift; sourceTree = "<group>"; };
+		8FD874331C760DC400181FA6 /* NotificationsHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotificationsHandler.swift; sourceTree = "<group>"; };
+		8FD875F31C762DC300181FA6 /* Notification.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Notification.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -75,8 +75,8 @@
 		8FD8741B1C760DBA00181FA6 /* Notification */ = {
 			isa = PBXGroup;
 			children = (
-				8FD875F31C762DC300181FA6 /* NSNotification.swift */,
-				8FD874331C760DC400181FA6 /* NotificationHandlerManager.swift */,
+				8FD875F31C762DC300181FA6 /* Notification.swift */,
+				8FD874331C760DC400181FA6 /* NotificationsHandler.swift */,
 				8FD8741C1C760DBA00181FA6 /* Notification.h */,
 				8FD8741E1C760DBA00181FA6 /* Info.plist */,
 			);
@@ -149,14 +149,16 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0720;
-				LastUpgradeCheck = 0720;
+				LastUpgradeCheck = 0820;
 				ORGANIZATIONNAME = "Christian Otkjær";
 				TargetAttributes = {
 					8FD874181C760DBA00181FA6 = {
 						CreatedOnToolsVersion = 7.2.1;
+						LastSwiftMigration = 0800;
 					};
 					8FD874221C760DBA00181FA6 = {
 						CreatedOnToolsVersion = 7.2.1;
+						LastSwiftMigration = 0800;
 					};
 				};
 			};
@@ -200,8 +202,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8FD874341C760DC400181FA6 /* NotificationHandlerManager.swift in Sources */,
-				8FD875F41C762DC300181FA6 /* NSNotification.swift in Sources */,
+				8FD874341C760DC400181FA6 /* NotificationsHandler.swift in Sources */,
+				8FD875F41C762DC300181FA6 /* Notification.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -237,8 +239,10 @@
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
@@ -261,7 +265,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -285,8 +289,10 @@
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
@@ -303,9 +309,10 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
 				VERSIONING_SYSTEM = "apple-generic";
@@ -317,6 +324,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CLANG_ENABLE_MODULES = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
 				DEFINES_MODULE = YES;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
@@ -328,6 +336,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
 		};
@@ -335,6 +344,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CLANG_ENABLE_MODULES = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
 				DEFINES_MODULE = YES;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
@@ -345,6 +355,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "com.silverback-it.Notification";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 3.0;
 			};
 			name = Release;
 		};
@@ -355,6 +366,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.silverback-it.NotificationTests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
 		};
@@ -365,6 +377,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.silverback-it.NotificationTests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
 			};
 			name = Release;
 		};
@@ -387,6 +400,7 @@
 				8FD8742F1C760DBA00181FA6 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		8FD874301C760DBA00181FA6 /* Build configuration list for PBXNativeTarget "NotificationTests" */ = {
 			isa = XCConfigurationList;
@@ -395,6 +409,7 @@
 				8FD874321C760DBA00181FA6 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

@@ -1,5 +1,5 @@
 //
-//  NotificationHandlerManager.swift
+//  NotificationsHandler.swift
 //  Silverback
 //
 //  Created by Christian Otkjær on 02/10/15.
@@ -9,14 +9,14 @@
 import Foundation
 
 /// A handler class to ease the book-keeping associated with adding closure-based notification handling.
-public class NotificationHandlerManager
+open class NotificationsHandler
 {
     /// The tokens managed by this manager
     private var observerTokens = Array<AnyObject>()
     
-    private let notificationCenter : NSNotificationCenter
+    private let notificationCenter : NotificationCenter
     
-    public required init(notificationCenter: NSNotificationCenter = NSNotificationCenter.defaultCenter())
+    public required init(notificationCenter: NotificationCenter = NotificationCenter.default)
     {
         self.notificationCenter = notificationCenter
     }
@@ -26,7 +26,7 @@ public class NotificationHandlerManager
         deregisterAll()
     }
     
-    public func deregisterAll()
+    open func deregisterAll()
     {
         while !observerTokens.isEmpty
         {
@@ -34,30 +34,30 @@ public class NotificationHandlerManager
         }
     }
     
-    public func registerHandlerForNotification(name: String? = nil,
+    open func registerHandlerForNotification(_ name: String? = nil,
         object: AnyObject? = nil,
-        queue: NSOperationQueue? = nil,
-        handler: ((notification: NSNotification) -> ()))
+        queue: OperationQueue? = nil,
+        handler: @escaping ((_ notification: Foundation.Notification) -> ()))
     {
-        observerTokens.append(notificationCenter.addObserverForName(name, object: object, queue: queue, usingBlock: { handler(notification: $0) }))
+        observerTokens.append(notificationCenter.addObserver(forName: name.map { NSNotification.Name(rawValue: $0) }, object: object, queue: queue, using: { handler($0) }))
     }
     
-    public func onAny(from object: AnyObject, perform: (() -> ()))
+    open func onAny(from object: AnyObject, perform: @escaping (() -> ()))
     {
         registerHandlerForNotification(nil, object: object, queue: nil) { _ in perform() }
     }
 
-    public func on(notificationName: String, from object: AnyObject? = nil, perform: (() -> ()))
+    open func on(_ notificationName: String, from object: AnyObject? = nil, perform: @escaping (() -> ()))
     {
         registerHandlerForNotification(notificationName, object: object, queue: nil) { _ in perform() }
     }
     
-    public func when(notificationName: String, with object: AnyObject? = nil, perform: (() -> ()))
+    open func when(_ notificationName: String, with object: AnyObject? = nil, perform: @escaping (() -> ()))
     {
         registerHandlerForNotification(notificationName, object: object, queue: nil) { _ in perform() }
     }
 
-    public func when<T:AnyObject>(notificationName: String, with object: AnyObject? = nil, perform: ((T) -> ()))
+    open func when<T:AnyObject>(_ notificationName: String, with object: AnyObject? = nil, perform: @escaping ((T) -> ()))
     {
         registerHandlerForNotification(notificationName, object: object) { (notification) -> () in
             if let t = notification.object as? T
