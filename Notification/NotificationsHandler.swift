@@ -34,30 +34,30 @@ open class NotificationsHandler
         }
     }
     
-    open func registerHandlerForNotification(_ name: String? = nil,
-        object: AnyObject? = nil,
-        queue: OperationQueue? = nil,
-        handler: @escaping ((_ notification: Foundation.Notification) -> ()))
+    open func registerHandlerForNotification(_ name: NSNotification.Name? = nil,
+                                             object: AnyObject? = nil,
+                                             queue: OperationQueue? = nil,
+                                             handler: @escaping ((_ notification: Foundation.Notification) -> ()))
     {
-        observerTokens.append(notificationCenter.addObserver(forName: name.map { NSNotification.Name(rawValue: $0) }, object: object, queue: queue, using: { handler($0) }))
+        observerTokens.append(notificationCenter.addObserver(forName: name, object: object, queue: queue, using: { handler($0) }))
     }
     
     open func onAny(from object: AnyObject, perform: @escaping (() -> ()))
     {
         registerHandlerForNotification(nil, object: object, queue: nil) { _ in perform() }
     }
-
-    open func on(_ notificationName: String, from object: AnyObject? = nil, perform: @escaping (() -> ()))
+    
+    open func on(_ notificationName: NSNotification.Name, from object: AnyObject? = nil, perform: @escaping (() -> ()))
     {
         registerHandlerForNotification(notificationName, object: object, queue: nil) { _ in perform() }
     }
     
-    open func when(_ notificationName: String, with object: AnyObject? = nil, perform: @escaping (() -> ()))
+    open func when(_ notificationName: NSNotification.Name, with object: AnyObject? = nil, perform: @escaping (() -> ()))
     {
         registerHandlerForNotification(notificationName, object: object, queue: nil) { _ in perform() }
     }
-
-    open func when<T:AnyObject>(_ notificationName: String, with object: AnyObject? = nil, perform: @escaping ((T) -> ()))
+    
+    open func when<T:AnyObject>(_ notificationName: NSNotification.Name, with object: AnyObject? = nil, perform: @escaping ((T) -> ()))
     {
         registerHandlerForNotification(notificationName, object: object) { (notification) -> () in
             if let t = notification.object as? T
@@ -67,4 +67,3 @@ open class NotificationsHandler
         }
     }
 }
-
