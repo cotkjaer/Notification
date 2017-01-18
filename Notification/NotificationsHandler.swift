@@ -8,13 +8,15 @@
 
 import Foundation
 
-/// A handler class to ease the book-keeping associated with adding closure-based notification handling.
+/** A handler class to ease the book-keeping associated with adding closure-based notification handling.
+ */
 open class NotificationsHandler
 {
-    /// The tokens managed by this manager
+    // The tokens managed by this manager
     private var observerTokens = Array<AnyObject>()
     
-    private let notificationCenter : NotificationCenter
+    
+    private let notificationCenter: NotificationCenter
     
     public required init(notificationCenter: NotificationCenter = NotificationCenter.default)
     {
@@ -26,6 +28,9 @@ open class NotificationsHandler
         deregisterAll()
     }
     
+    /**
+     remove all handler registrations
+     */
     open func deregisterAll()
     {
         while !observerTokens.isEmpty
@@ -34,6 +39,9 @@ open class NotificationsHandler
         }
     }
     
+    /**
+     register a handler (closure) for a given notification type
+     */
     open func registerHandlerForNotification(_ name: NSNotification.Name? = nil,
                                              object: AnyObject? = nil,
                                              queue: OperationQueue? = nil,
